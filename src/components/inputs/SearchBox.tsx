@@ -51,7 +51,7 @@ const SearchBox = ({
   );
 
   const inputClasses = twMerge(
-    "flex-1 p-0 text-sm bg-transparent outline-none border-none ml-2.5 text-content-2 placeholder:text-content-3",
+    "p-0 text-sm bg-transparent outline-none border-none ml-2.5 text-content-2 placeholder:text-content-3",
     clsx({
       "text-content-1": searchApplied,
     }),
@@ -60,7 +60,9 @@ const SearchBox = ({
 
   return (
     <div className={classes}>
-      <MagnifyingIcon />
+      <div className="w-4 h-4">
+        <MagnifyingIcon />
+      </div>
       <input
         {...props}
         ref={inputRef}
@@ -71,7 +73,7 @@ const SearchBox = ({
         className={inputClasses}
       />
       {searchApplied ? (
-        <div onClick={handleClearSearch} className="cursor-pointer">
+        <div onClick={handleClearSearch} className="cursor-pointer text-content-3">
           <XIcon />
         </div>
       ) : text.length ? (

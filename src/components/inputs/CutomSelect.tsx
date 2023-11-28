@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import ArroDownIcon from "@/assets/icons/chevron-down.svg?react";
+import { twMerge } from "tailwind-merge";
 
 interface Option {
   value: string;
@@ -8,16 +9,20 @@ interface Option {
 
 interface CustomSelectProps {
   options: Option[];
+  containerClass?: string;
   onChange: (value: string) => void;
   placeholder?: string;
+  defaultOption?: string;
 }
 
-const CustomSelect: React.FC<CustomSelectProps> = ({
+const CustomSelect = ({
   options,
   onChange,
+  containerClass,
+  defaultOption,
   placeholder = "Select",
-}) => {
-  const [selectedOption, setSelectedOption] = useState<string | null>(null);
+}: CustomSelectProps) => {
+  const [selectedOption, setSelectedOption] = useState<string | null>(defaultOption || null);
   const [isOpen, setIsOpen] = useState(false);
   const selectRef = useRef<HTMLDivElement>(null);
 
@@ -43,8 +48,13 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
     onChange(value);
   };
 
+  const containeClasses = twMerge(
+    'relative text-sm inline-block text-left w-full',
+    containerClass
+  )
+
   return (
-    <div ref={selectRef} className="relative text-sm inline-block text-left w-[248px]">
+    <div ref={selectRef} className={containeClasses}>
       <button
         type="button"
         className="inline-flex justify-between items-center w-full rounded-lg border border-outline py-3 px-4 font-medium"
@@ -60,7 +70,7 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
         <ArroDownIcon />
       </button>
       {isOpen && (
-        <div className="w-full origin-top-right absolute right-0 mt-2 rounded-md bg-neutral-light">
+        <div className="w-full origin-top-right absolute right-0 mt-2 rounded-md bg-neutral-dark">
           <div className="py-1">
             {options.map((option) => (
               <div
