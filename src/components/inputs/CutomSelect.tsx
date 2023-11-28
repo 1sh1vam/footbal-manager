@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import ArroDownIcon from "@/assets/icons/chevron-down.svg?react";
 import { twMerge } from "tailwind-merge";
 
