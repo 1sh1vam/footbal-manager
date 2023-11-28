@@ -5,6 +5,11 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    fontFamily: {
+      mulish: ['Mulish', 'sans-serif'],
+      poppins: ['Poppins', 'sans-serif'],
+      urbanist: ['Urbanist', 'sans-serif']
+    },
     extend: {
       colors: {
         'primary-orange': '#FEA013',
