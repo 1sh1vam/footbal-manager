@@ -27,7 +27,7 @@ const PlayerDetails = ({ player, isValidFormation = false }: PlayerDetailsProps)
   return (
     <div className="flex-1 min-w-[322px] bg-neutral-dark rounded p-6 relative">
       <Image
-        className="absolute left-1/2 -translate-x-1/2"
+        className="absolute left-1/2 -translate-x-1/2 h-[258px]"
         src={player["Player Image"]}
         fallbackSrc={PlayerImg}
         alt="Player"
